@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class LoginController extends Controller
 {
@@ -15,24 +16,29 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        // Validate the form data
+
         $request->validate([
             'email' => 'required|email',
-            'password' => 'required',
+            'password' => 'required|min:6',
         ]);
 
-        // echo $request->email;
-        // exit();
-        // Attempt to log the user in
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            // If successful, redirect to intended location
-            return redirect()->intended('dashboard');
+        $user = DB::table('admin')->where('email', $request->email)->first();
+
+        if ($user) {
+            if (Hash::check($request->password, $user->password)) {
+
+                Auth::loginUsingId($user->id);
+                return redirect()->intended('dashboard');
+
+            } else {
+
+                return back()->withErrors(['password' => 'Incorrect password']);
+
+            }
+            
+        } else {
+            return back()->withErrors(['email' => 'The provided email does not match any records.']);
         }
-
-        // If unsuccessful, redirect back to the login with an error
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ]);
     }
 
     public function logout()

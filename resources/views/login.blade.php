@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-        <title>OneUI - Bootstrap 4 Admin Template &amp; UI Framework</title>
+        <title>Serene Tuition</title>
 
         <meta name="description" content="OneUI - Bootstrap 4 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
         <meta name="author" content="pixelcave">
@@ -54,7 +54,7 @@
                                         </div>
                                         <div class="block-content">
                                             <div class="p-sm-3 px-lg-4 py-lg-5">
-                                                <h1 class="mb-2">OneUI</h1>
+                                                <h1 class="mb-2">Serene Tuition</h1>
                                                 <p>Welcome, please login.</p>
 
                                                 <!-- Sign In Form -->
@@ -63,12 +63,12 @@
                                                 <form class="js-validation-signin" action="{{ route('login') }}" method="POST"> 
                                                     @csrf
                                                     <div class="py-3">
-                                                        <div class="form-group">
-                                                            <input type="email" class="form-control form-control-alt form-control-lg" id="login-username" name="email"  required>
-                                                        </div>
                                                         @error('email')
                                                             <span>{{ $message }}</span>
                                                         @enderror
+                                                        <div class="form-group">
+                                                            <input type="email" class="form-control form-control-alt form-control-lg" id="login-username" name="email"  required>
+                                                        </div>
                                                         <div class="form-group">
                                                             <input type="password" class="form-control form-control-alt form-control-lg" id="login-password" name="password" required>
                                                         </div>
@@ -99,7 +99,7 @@
                             </div>
                         </div>
                         <div class="content content-full font-size-sm text-muted text-center">
-                            <strong>OneUI 4.6</strong> &copy; <span data-toggle="year-copy"></span>
+                            <strong>Tuition</strong> &copy; <span data-toggle="year-copy"></span>
                         </div>
                     </div>
                 </div>
